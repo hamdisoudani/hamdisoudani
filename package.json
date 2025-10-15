@@ -1,0 +1,31 @@
+{
+  "name": "hamdi-soudani-profile",
+  "version": "1.0.0",
+  "description": "Professional GitHub Profile for Hamdi Soudani - Full-Stack Developer & AI Agent Specialist",
+  "main": "README.md",
+  "scripts": {
+    "preview": "live-server --port=3000 --entry-file=README.md",
+    "validate": "npx markdownlint README.md --config .markdownlint.json",
+    "test:accessibility": "node scripts/accessibility-check.js",
+    "test:responsive": "node scripts/responsive-check.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "keywords": [
+    "github-profile",
+    "readme",
+    "fullstack",
+    "ai-agents",
+    "professional"
+  ],
+  "author": "Hamdi Soudani <hamdisoudani.freelancer@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "markdownlint-cli": "^0.38.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

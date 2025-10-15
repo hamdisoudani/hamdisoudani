@@ -1,0 +1,22 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD033": false,
+  "MD041": false,
+  "no-inline-html": false,
+  "line-length": false,
+  "ul-style": {
+    "style": "consistent"
+  },
+  "no-trailing-spaces": {
+    "br_spaces": 2
+  },
+  "heading-style": {
+    "style": "atx"
+  },
+  "ul-indent": {
+    "indent": 2
+  },
+  "no-bare-urls": false,
+  "fenced-code-language": false
+}

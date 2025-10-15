@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Markdown Preview Server
+  preview:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+      npm install -g live-server &&
+      live-server --port=3000 --host=0.0.0.0 --entry-file=README.md
+      "
+    environment:
+      - NODE_ENV=development
+
+  # GitHub API Mock Server
+  api-mock:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+      npm install express cors &&
+      node mock-server.js
+      "
+    environment:
+      - PORT=3001
+
+  # Markdown Validator
+  validator:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+      npm install markdownlint-cli &&
+      npx markdownlint README.md --config .markdownlint.json
+      "
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  app-data:
+    driver: local
