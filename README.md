@@ -2,6 +2,8 @@
 
 ## 🚀 Full-Stack Developer & AI Agent Specialist
 
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Full-Stack+Developer+%26+AI+Specialist;Building+Intelligent+Applications;Innovating+with+Code+%26+AI&font=Fira+Code&center=true&width=500&height=45&color=0d8ce4&vCenter=true&pause=1000&size=20)](https://github.com/hamdisoudani)
+
 > Building intelligent applications that bridge the gap between cutting-edge AI and practical software engineering.
 
 ---
