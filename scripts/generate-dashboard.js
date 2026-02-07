@@ -9,8 +9,8 @@ const CONFIG = {
     height: 460,
     theme: {
         bg: '#0d1117', // GitHub Dark Dim
-        glass: 'rgba(22, 27, 34, 0.8)', // Semi-transparent panel
-        glassBorder: 'rgba(48, 54, 61, 0.6)',
+        glass: 'rgba(22, 27, 34, 0.85)', // Slightly darker for better contrast
+        glassBorder: 'rgba(48, 54, 61, 0.8)',
         text: '#c9d1d9',
         textMuted: '#8b949e',
         accentPrimary: '#58a6ff', // Blue
@@ -27,7 +27,8 @@ const createSVG = (content, styles) => `
         .text { font-family: ${CONFIG.theme.font}; fill: ${CONFIG.theme.text}; }
         .text-muted { fill: ${CONFIG.theme.textMuted}; }
         .text-accent { fill: ${CONFIG.theme.accentPrimary}; }
-        .glass-panel { fill: ${CONFIG.theme.glass}; stroke: ${CONFIG.theme.glassBorder}; stroke-width: 1; rx: 10; }
+        .glass-panel { fill: ${CONFIG.theme.glass}; stroke: ${CONFIG.theme.glassBorder}; stroke-width: 1; rx: 12; }
+        .glass-panel-inner { fill: rgba(255, 255, 255, 0.03); stroke: rgba(255, 255, 255, 0.05); stroke-width: 1; rx: 8; }
         .icon { fill: ${CONFIG.theme.textMuted}; }
 
         /* Animations */
@@ -43,7 +44,15 @@ const createSVG = (content, styles) => `
 
         ${styles}
     </style>
-    <rect width="100%" height="100%" fill="${CONFIG.theme.bg}" rx="15" />
+    <!-- Background Gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#bgGradient)" rx="15" />
+
     ${content}
 </svg>`;
 
@@ -99,7 +108,6 @@ async function fetchGitHubData(username) {
         const events = await eventsRes.json();
 
         // Fetch Total Commits (Approximation via Search API)
-        // Note: The Search API has strict rate limits. If it fails, we fall back to 0 or a known base.
         let totalCommits = 0;
         try {
             const searchRes = await fetch(`https://api.github.com/search/commits?q=author:${username}`, { headers });
@@ -131,7 +139,6 @@ async function fetchGitHubData(username) {
         const totalForks = repos.reduce((acc, repo) => acc + repo.forks_count, 0);
 
         // Determine "Momentum" / Streak proxy
-        // If we can't get streaks, we use recent activity count
         const recentActivity = events.length;
 
         return {
@@ -195,6 +202,7 @@ function generateSVGContent(data) {
             <!-- Stars -->
             <g transform="translate(0, 0)">
                 <rect width="80" height="80" class="glass-panel" />
+                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
                 <g transform="translate(15, 20) scale(1.5)" class="text-accent" style="fill: ${CONFIG.theme.accentTertiary};">${icons.star}</g>
                 <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.stars}</text>
                 <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Stars</text>
@@ -203,6 +211,7 @@ function generateSVGContent(data) {
             <!-- Forks -->
             <g transform="translate(90, 0)">
                 <rect width="80" height="80" class="glass-panel" />
+                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
                 <g transform="translate(15, 20) scale(1.5)" class="text-muted">${icons.fork}</g>
                 <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.forks}</text>
                 <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Forks</text>
@@ -211,6 +220,7 @@ function generateSVGContent(data) {
             <!-- Commits (New) -->
             <g transform="translate(180, 0)">
                 <rect width="80" height="80" class="glass-panel" />
+                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
                 <g transform="translate(15, 20) scale(1.5)" class="text-accent">${icons.commit}</g>
                 <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.commits > 0 ? stats.commits : 'N/A'}</text>
                 <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Commits</text>
@@ -219,6 +229,7 @@ function generateSVGContent(data) {
             <!-- Repos -->
             <g transform="translate(270, 0)">
                 <rect width="80" height="80" class="glass-panel" />
+                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
                 <g transform="translate(15, 20) scale(1.5)" class="text-accent">${icons.repo}</g>
                 <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.repos}</text>
                 <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Repos</text>
@@ -291,7 +302,7 @@ function generateSVGContent(data) {
         <g transform="translate(30, 420)">
              <text font-family="monospace" font-size="10" class="text-muted">
                 System Status: <tspan fill="${CONFIG.theme.accentSecondary}">ONLINE</tspan> |
-                Last Updated: <tspan fill="${CONFIG.theme.text}">${new Date().toISOString().split('T')[0]} UTC</tspan>
+                Last Updated: <tspan fill="${CONFIG.theme.text}">${new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})} UTC</tspan>
             </text>
         </g>
     `;
