@@ -8,12 +8,11 @@
 
 ---
 
-## 📊 GitHub Stats
+## 📊 Activity Dashboard
 
-![Hamdi's GitHub stats](https://github-readme-stats.vercel.app/api?username=hamdisoudani&show_icons=true&theme=default&hide_border=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=hamdisoudani&layout=compact&theme=default&hide_border=true)
-
-![GitHub Streak](https://streak-stats.demolab.com/?user=hamdisoudani&theme=default&hide_border=true)
+<div align="center" role="region" aria-label="GitHub Activity Dashboard">
+  <img src="./assets/dashboard.svg" alt="GitHub Dashboard for Hamdi Soudani showing repository statistics, top languages, and recent activity." width="850" />
+</div>
 
 ---
 
@@ -72,18 +71,6 @@
 
 ---
 
-## 📈 Activity Overview
-
-| **Metric** | **Count** |
-|------------|-----------|
-| **Public Repositories** | 8 |
-| **Total Commits** | 199 |
-| **Pull Requests** | 12 |
-| **Issues** | 2 |
-| **Contributions** | 26 |
-| **Current Streak** | 30 days |
-
----
 
 ## 📫 Let's Connect
 

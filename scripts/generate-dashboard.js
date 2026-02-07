@@ -69,22 +69,50 @@ async function fetchGitHubData(username) {
 
     if (process.env.GITHUB_TOKEN) {
         headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
+    } else {
+        console.warn('⚠️ No GITHUB_TOKEN provided. Rate limits will be strict and some data may be unavailable.');
     }
 
     try {
         console.log(`Fetching data for ${username}...`);
 
-        const [userRes, reposRes, eventsRes] = await Promise.all([
-            fetch(`https://api.github.com/users/${username}`, { headers }),
-            fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers }),
-            fetch(`https://api.github.com/users/${username}/events/public?per_page=20`, { headers }) // Reduced to 20 for speed/relevance
-        ]);
-
-        if (!userRes.ok) throw new Error(`User fetch failed: ${userRes.status}`);
-
+        // Fetch User Data
+        const userRes = await fetch(`https://api.github.com/users/${username}`, { headers });
+        if (!userRes.ok) {
+            const errorBody = await userRes.text();
+            throw new Error(`User fetch failed: ${userRes.status} ${userRes.statusText} - ${errorBody}`);
+        }
         const user = await userRes.json();
-        const repos = reposRes.ok ? await reposRes.json() : [];
-        const events = eventsRes.ok ? await eventsRes.json() : [];
+
+        // Fetch Repositories
+        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers });
+        if (!reposRes.ok) {
+            throw new Error(`Repos fetch failed: ${reposRes.status}`);
+        }
+        const repos = await reposRes.json();
+
+        // Fetch Public Events (Activity)
+        const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public?per_page=20`, { headers });
+        if (!eventsRes.ok) {
+             throw new Error(`Events fetch failed: ${eventsRes.status}`);
+        }
+        const events = await eventsRes.json();
+
+        // Fetch Total Commits (Approximation via Search API)
+        // Note: The Search API has strict rate limits. If it fails, we fall back to 0 or a known base.
+        let totalCommits = 0;
+        try {
+            const searchRes = await fetch(`https://api.github.com/search/commits?q=author:${username}`, { headers });
+            if (searchRes.ok) {
+                const searchData = await searchRes.json();
+                totalCommits = searchData.total_count;
+            } else {
+                 console.warn(`Commits search failed: ${searchRes.status}. Using 0.`);
+            }
+        } catch (e) {
+            console.warn('Failed to fetch total commits:', e.message);
+        }
+
 
         // Calculate Languages
         const languages = {};
@@ -102,8 +130,8 @@ async function fetchGitHubData(username) {
         const totalStars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
         const totalForks = repos.reduce((acc, repo) => acc + repo.forks_count, 0);
 
-        // Mock Streak (since we can't easily calculate true streak without GraphQL contribution calendar)
-        // We'll use "Recent Activity" count as a proxy for "Current Momentum"
+        // Determine "Momentum" / Streak proxy
+        // If we can't get streaks, we use recent activity count
         const recentActivity = events.length;
 
         return {
@@ -116,20 +144,15 @@ async function fetchGitHubData(username) {
                 forks: totalForks,
                 repos: user.public_repos,
                 followers: user.followers,
-                momentum: recentActivity
+                momentum: recentActivity,
+                commits: totalCommits
             }
         };
 
     } catch (error) {
-        console.error('Error fetching data:', error);
-        // Return fallback data if fetch fails
-        return {
-            user: { login: username, name: 'Hamdi Soudani', bio: 'Full Stack Developer | DevOps', avatar_url: '' },
-            repos: [],
-            events: [],
-            languages: [{name: 'TypeScript', percent: 40}, {name: 'Python', percent: 30}, {name: 'JavaScript', percent: 20}],
-            stats: { stars: 0, forks: 0, repos: 0, followers: 0, momentum: 0 }
-        };
+        console.error('❌ FATAL ERROR fetching data:', error);
+        // NO FALLBACK MOCK DATA. Fail hard so the user knows.
+        process.exit(1);
     }
 }
 
@@ -144,7 +167,8 @@ function generateSVGContent(data) {
         star: '<path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>',
         repo: '<path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>',
         fork: '<path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>',
-        terminal: '<path d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25Zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM7.25 8a.75.75 0 0 1-.22.53l-2.25 2.25a.75.75 0 1 1-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 1 1 1.06-1.06l2.25 2.25c.141.14.22.331.22.53Zm1.5 1.5h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5Z"></path>'
+        terminal: '<path d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25Zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM7.25 8a.75.75 0 0 1-.22.53l-2.25 2.25a.75.75 0 1 1-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 1 1 1.06-1.06l2.25 2.25c.141.14.22.331.22.53Zm1.5 1.5h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5Z"></path>',
+        commit: '<path d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32Z"></path>'
     };
 
     // --- Layout Construction ---
@@ -152,7 +176,7 @@ function generateSVGContent(data) {
     // 1. Header (Top Left)
     const header = `
         <g transform="translate(30, 30)">
-            <!-- Avatar Circle (Placeholder/Initials if no image logic) -->
+            <!-- Avatar Circle -->
             <circle cx="40" cy="40" r="38" fill="${CONFIG.theme.glass}" stroke="${CONFIG.theme.accentPrimary}" stroke-width="2" />
             <text x="40" y="50" text-anchor="middle" font-size="28" font-weight="bold" fill="${CONFIG.theme.text}">${user.name ? user.name.charAt(0) : 'U'}</text>
 
@@ -170,26 +194,34 @@ function generateSVGContent(data) {
         <g transform="translate(480, 30)">
             <!-- Stars -->
             <g transform="translate(0, 0)">
-                <rect width="100" height="80" class="glass-panel" />
-                <g transform="translate(20, 20) scale(1.5)" class="text-accent" style="fill: ${CONFIG.theme.accentTertiary};">${icons.star}</g>
-                <text x="50" y="65" text-anchor="middle" font-size="18" font-weight="bold" class="text">${stats.stars}</text>
-                <text x="50" y="80" text-anchor="middle" font-size="10" class="text-muted" dy="-2">Stars</text>
+                <rect width="80" height="80" class="glass-panel" />
+                <g transform="translate(15, 20) scale(1.5)" class="text-accent" style="fill: ${CONFIG.theme.accentTertiary};">${icons.star}</g>
+                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.stars}</text>
+                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Stars</text>
             </g>
 
             <!-- Forks -->
-            <g transform="translate(115, 0)">
-                <rect width="100" height="80" class="glass-panel" />
-                <g transform="translate(20, 20) scale(1.5)" class="text-muted">${icons.fork}</g>
-                <text x="50" y="65" text-anchor="middle" font-size="18" font-weight="bold" class="text">${stats.forks}</text>
-                <text x="50" y="80" text-anchor="middle" font-size="10" class="text-muted" dy="-2">Forks</text>
+            <g transform="translate(90, 0)">
+                <rect width="80" height="80" class="glass-panel" />
+                <g transform="translate(15, 20) scale(1.5)" class="text-muted">${icons.fork}</g>
+                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.forks}</text>
+                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Forks</text>
+            </g>
+
+            <!-- Commits (New) -->
+            <g transform="translate(180, 0)">
+                <rect width="80" height="80" class="glass-panel" />
+                <g transform="translate(15, 20) scale(1.5)" class="text-accent">${icons.commit}</g>
+                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.commits > 0 ? stats.commits : 'N/A'}</text>
+                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Commits</text>
             </g>
 
             <!-- Repos -->
-            <g transform="translate(230, 0)">
-                <rect width="100" height="80" class="glass-panel" />
-                <g transform="translate(20, 20) scale(1.5)" class="text-accent">${icons.repo}</g>
-                <text x="50" y="65" text-anchor="middle" font-size="18" font-weight="bold" class="text">${stats.repos}</text>
-                <text x="50" y="80" text-anchor="middle" font-size="10" class="text-muted" dy="-2">Repos</text>
+            <g transform="translate(270, 0)">
+                <rect width="80" height="80" class="glass-panel" />
+                <g transform="translate(15, 20) scale(1.5)" class="text-accent">${icons.repo}</g>
+                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">${stats.repos}</text>
+                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Repos</text>
             </g>
         </g>
     `;
