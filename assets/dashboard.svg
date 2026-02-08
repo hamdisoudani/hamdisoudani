@@ -1,27 +1,18 @@
 
-<svg width="850" height="460" viewBox="0 0 850 460" xmlns="http://www.w3.org/2000/svg">
+<svg width="850" height="520" viewBox="0 0 850 520" xmlns="http://www.w3.org/2000/svg">
     <style>
-        .text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; fill: #c9d1d9; }
+        .text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; fill: #c9d1d9; }
         .text-muted { fill: #8b949e; }
         .text-accent { fill: #58a6ff; }
         .glass-panel { fill: rgba(22, 27, 34, 0.85); stroke: rgba(48, 54, 61, 0.8); stroke-width: 1; rx: 12; }
         .glass-panel-inner { fill: rgba(255, 255, 255, 0.03); stroke: rgba(255, 255, 255, 0.05); stroke-width: 1; rx: 8; }
         .icon { fill: #8b949e; }
 
-        /* Animations */
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            .animate-pulse { animation: pulse 2s infinite; }
-        }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        .animate-pulse { animation: pulse 2s infinite; }
 
         
     </style>
-    <!-- Background Gradient -->
     <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
@@ -29,143 +20,148 @@
         </linearGradient>
     </defs>
     <rect width="100%" height="100%" fill="url(#bgGradient)" rx="15" />
-
     
         <g transform="translate(30, 30)">
-            <!-- Avatar Circle -->
-            <circle cx="40" cy="40" r="38" fill="rgba(22, 27, 34, 0.85)" stroke="#58a6ff" stroke-width="2" />
-            <text x="40" y="50" text-anchor="middle" font-size="28" font-weight="bold" fill="#c9d1d9">U</text>
+            <!-- Avatar Ring -->
+            <circle cx="40" cy="40" r="38" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="238" stroke-dashoffset="30" transform="rotate(-90 40 40)" />
 
-            <!-- Name & Title -->
-            <text x="95" y="35" font-size="24" font-weight="bold" class="text">hamdisoudani</text>
-            <text x="95" y="60" font-size="14" class="text-muted">@hamdisoudani</text>
+            <!-- Default Avatar Placeholder (We don't fetch image bytes, just show initial) -->
+            <circle cx="40" cy="40" r="34" fill="rgba(22, 27, 34, 0.85)" />
+            <text x="40" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#c9d1d9">H</text>
 
-            <!-- Bio/Tagline -->
-            <text x="95" y="85" font-size="12" class="text-accent" style="opacity: 0.9;">Full Stack Developer &amp; AI Specialist</text>
-        </g>
-    
-        <g transform="translate(480, 30)">
-            <!-- Stars -->
-            <g transform="translate(0, 0)">
-                <rect width="80" height="80" class="glass-panel" />
-                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
-                <g transform="translate(15, 20) scale(1.5)" class="text-accent" style="fill: #f78166;"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></g>
-                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">4</text>
-                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Stars</text>
-            </g>
+            <text x="95" y="30" font-size="24" font-weight="bold" class="text">hamdisoudani</text>
+            <text x="95" y="50" font-size="14" class="text-muted">@hamdisoudani</text>
 
-            <!-- Forks -->
-            <g transform="translate(90, 0)">
-                <rect width="80" height="80" class="glass-panel" />
-                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
-                <g transform="translate(15, 20) scale(1.5)" class="text-muted"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path></g>
-                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">0</text>
-                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Forks</text>
-            </g>
+            <!-- Bio -->
+            <foreignObject x="95" y="60" width="400" height="40">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="color: #8b949e; font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                    Full Stack Developer
+                </div>
+            </foreignObject>
 
-            <!-- Commits (New) -->
-            <g transform="translate(180, 0)">
-                <rect width="80" height="80" class="glass-panel" />
-                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
-                <g transform="translate(15, 20) scale(1.5)" class="text-accent"><path d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32Z"></path></g>
-                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">75</text>
-                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Commits</text>
-            </g>
+            <!-- Metadata Row -->
+            <g transform="translate(95, 80)">
 
-            <!-- Repos -->
-            <g transform="translate(270, 0)">
-                <rect width="80" height="80" class="glass-panel" />
-                <rect x="5" y="5" width="70" height="70" class="glass-panel-inner" />
-                <g transform="translate(15, 20) scale(1.5)" class="text-accent"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></g>
-                <text x="40" y="65" text-anchor="middle" font-size="16" font-weight="bold" class="text">11</text>
-                <text x="40" y="78" text-anchor="middle" font-size="9" class="text-muted">Repos</text>
+
+
             </g>
         </g>
     
-        <g transform="translate(30, 150)">
-            <text x="0" y="0" font-size="14" font-weight="bold" class="text-muted" style="text-transform: uppercase; letter-spacing: 1px;">Top Languages</text>
+        <g transform="translate(500, 30)">
+
+                <g transform="translate(0, 0)">
+                    <rect width="150" height="50" class="glass-panel" fill-opacity="0.5" />
+                    <text x="15" y="20" font-size="10" class="text-muted" style="text-transform: uppercase;">Total Contributions</text>
+                    <text x="15" y="40" font-size="18" font-weight="bold" fill="#3fb950">291</text>
+                </g>
+
+                <g transform="translate(160, 0)">
+                    <rect width="150" height="50" class="glass-panel" fill-opacity="0.5" />
+                    <text x="15" y="20" font-size="10" class="text-muted" style="text-transform: uppercase;">Followers</text>
+                    <text x="15" y="40" font-size="18" font-weight="bold" fill="#58a6ff">1</text>
+                </g>
+
+                <g transform="translate(0, 60)">
+                    <rect width="150" height="50" class="glass-panel" fill-opacity="0.5" />
+                    <text x="15" y="20" font-size="10" class="text-muted" style="text-transform: uppercase;">Total Stars</text>
+                    <text x="15" y="40" font-size="18" font-weight="bold" fill="#f78166">4</text>
+                </g>
+
+                <g transform="translate(160, 60)">
+                    <rect width="150" height="50" class="glass-panel" fill-opacity="0.5" />
+                    <text x="15" y="20" font-size="10" class="text-muted" style="text-transform: uppercase;">Repositories</text>
+                    <text x="15" y="40" font-size="18" font-weight="bold" fill="#c9d1d9">34</text>
+                </g>
+
+        </g>
+
+        <g transform="translate(30, 140)">
+            <rect width="790" height="70" class="glass-panel" />
+
+            <g transform="translate(30, 25)">
+                <text x="0" y="0" font-size="10" class="text-muted">COMMITS (Year)</text>
+                <text x="0" y="20" font-size="16" font-weight="bold" class="text">206</text>
+            </g>
+            <line x1="150" y1="10" x2="150" y2="60" stroke="rgba(48, 54, 61, 0.8)" />
+
+            <g transform="translate(180, 25)">
+                <text x="0" y="0" font-size="10" class="text-muted">PULL REQUESTS</text>
+                <text x="0" y="20" font-size="16" font-weight="bold" class="text">22</text>
+            </g>
+            <line x1="300" y1="10" x2="300" y2="60" stroke="rgba(48, 54, 61, 0.8)" />
+
+            <g transform="translate(330, 25)">
+                <text x="0" y="0" font-size="10" class="text-muted">ISSUES</text>
+                <text x="0" y="20" font-size="16" font-weight="bold" class="text">36</text>
+            </g>
+            <line x1="450" y1="10" x2="450" y2="60" stroke="rgba(48, 54, 61, 0.8)" />
+
+            <g transform="translate(480, 25)">
+                <text x="0" y="0" font-size="10" class="text-muted">REVIEWS</text>
+                <text x="0" y="20" font-size="16" font-weight="bold" class="text">0</text>
+            </g>
+            <line x1="600" y1="10" x2="600" y2="60" stroke="rgba(48, 54, 61, 0.8)" />
+
+            <g transform="translate(630, 25)">
+                <text x="0" y="0" font-size="10" class="text-muted">CONTRIBUTIONS</text>
+                <text x="0" y="20" font-size="16" font-weight="bold" class="text-accent">291</text>
+            </g>
+        </g>
+    
+        <g transform="translate(30, 240)">
+            <text x="0" y="0" font-size="14" font-weight="bold" class="text">Top Languages</text>
             <g transform="translate(0, 20)">
                 
-            <g transform="translate(0, 0)">
-                <text x="0" y="12" font-size="12" class="text" width="80">TypeScript</text>
-                <rect x="90" y="2" width="90" height="12" rx="4" fill="#58a6ff" opacity="0.8" />
-                <text x="190" y="12" font-size="10" class="text-muted">45%</text>
-            </g>
-        
-            <g transform="translate(0, 25)">
-                <text x="0" y="12" font-size="12" class="text" width="80">JavaScript</text>
-                <rect x="90" y="2" width="54" height="12" rx="4" fill="#3fb950" opacity="0.8" />
-                <text x="154" y="12" font-size="10" class="text-muted">27%</text>
-            </g>
-        
+                    <g transform="translate(0, 0)">
+                        <text x="0" y="10" font-size="12" class="text" width="80">TypeScript</text>
+                        <rect x="100" y="2" width="130" height="8" rx="4" fill="#58a6ff" />
+                        <text x="240" y="10" font-size="10" class="text-muted">52%</text>
+                    </g>
+
+                    <g transform="translate(0, 25)">
+                        <text x="0" y="10" font-size="12" class="text" width="80">JavaScript</text>
+                        <rect x="100" y="2" width="117.5" height="8" rx="4" fill="#3fb950" />
+                        <text x="227.5" y="10" font-size="10" class="text-muted">47%</text>
+                    </g>
+
+                    <g transform="translate(0, 50)">
+                        <text x="0" y="10" font-size="12" class="text" width="80">TeX</text>
+                        <rect x="100" y="2" width="0" height="8" rx="4" fill="#8b949e" />
+                        <text x="110" y="10" font-size="10" class="text-muted">0%</text>
+                    </g>
+
+                    <g transform="translate(0, 75)">
+                        <text x="0" y="10" font-size="12" class="text" width="80">Liquid</text>
+                        <rect x="100" y="2" width="0" height="8" rx="4" fill="#8b949e" />
+                        <text x="110" y="10" font-size="10" class="text-muted">0%</text>
+                    </g>
+
+                    <g transform="translate(0, 100)">
+                        <text x="0" y="10" font-size="12" class="text" width="80">Python</text>
+                        <rect x="100" y="2" width="0" height="8" rx="4" fill="#8b949e" />
+                        <text x="110" y="10" font-size="10" class="text-muted">0%</text>
+                    </g>
+
             </g>
         </g>
     
-        <g transform="translate(350, 140)">
-            <rect width="470" height="180" class="glass-panel" fill="rgba(0,0,0,0.3)" />
-
-            <!-- Terminal Header -->
-            <rect width="470" height="24" rx="10" fill="rgba(255,255,255,0.05)" />
-            <circle cx="15" cy="12" r="4" fill="#ff5f56" />
-            <circle cx="30" cy="12" r="4" fill="#ffbd2e" />
-            <circle cx="45" cy="12" r="4" fill="#27c93f" />
-            <text x="235" y="16" text-anchor="middle" font-family="monospace" font-size="10" class="text-muted">dev@hamdisoudani:~/activity</text>
-
-            <!-- Terminal Content -->
-            <g transform="translate(0, 10)">
+        <g transform="translate(300, 240)">
+            <text x="0" y="0" font-size="14" font-weight="bold" class="text">Featured Projects</text>
+            <g transform="translate(0, 20)">
                 
-            <text x="15" y="30" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#58a6ff" font-weight="bold">PullRequest</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-            <text x="15" y="50" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#3fb950" font-weight="bold">Push</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-            <text x="15" y="70" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#58a6ff" font-weight="bold">PullRequest</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-            <text x="15" y="90" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#3fb950" font-weight="bold">Push</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-            <text x="15" y="110" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#3fb950" font-weight="bold">Push</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-            <text x="15" y="130" font-family="monospace" font-size="11" class="text">
-                <tspan fill="#8b949e">[Feb 7]</tspan>
-                <tspan fill="#58a6ff" font-weight="bold">PullRequest</tspan>
-                <tspan fill="#8b949e">@</tspan>
-                <tspan fill="#c9d1d9">hamdisoudani</tspan>
-            </text>
-        
-                <g transform="translate(15, 150)">
-                     <text font-family="monospace" font-size="11" class="text-accent animate-pulse">_</text>
-                </g>
             </g>
         </g>
     
-        <g transform="translate(30, 420)">
+        <g transform="translate(30, 400)">
+            <text x="0" y="-10" font-size="12" font-weight="bold" class="text-muted">Contribution Activity</text>
+            <g transform="translate(0, 0)">
+                <rect x="0" y="0" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="0" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="0" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="0" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="0" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="0" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="0" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="14" y="0" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="14" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="14" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="14" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="14" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="14" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="14" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="28" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="28" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="28" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="28" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="28" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="28" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="28" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="42" y="0" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="42" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="42" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="42" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="42" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="42" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="42" y="84" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="56" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="56" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="56" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="56" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="56" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="56" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="56" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="70" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="84" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="98" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="98" y="84" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="112" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="112" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="126" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="140" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="140" y="14" width="10" height="10" rx="2" fill="#30a14e" /><rect x="140" y="28" width="10" height="10" rx="2" fill="#216e39" /><rect x="140" y="42" width="10" height="10" rx="2" fill="#216e39" /><rect x="140" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="140" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="140" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="154" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="168" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="168" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="168" y="28" width="10" height="10" rx="2" fill="#30a14e" /><rect x="168" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="168" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="168" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="168" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="182" y="0" width="10" height="10" rx="2" fill="#216e39" /><rect x="182" y="14" width="10" height="10" rx="2" fill="#40c463" /><rect x="182" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="182" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="182" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="182" y="70" width="10" height="10" rx="2" fill="#216e39" /><rect x="182" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="196" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="196" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="210" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="224" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="238" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="252" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="252" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="252" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="252" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="252" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="252" y="70" width="10" height="10" rx="2" fill="#40c463" /><rect x="252" y="84" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="266" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="266" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="266" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="266" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="266" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="266" y="70" width="10" height="10" rx="2" fill="#30a14e" /><rect x="266" y="84" width="10" height="10" rx="2" fill="#40c463" /><rect x="280" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="280" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="280" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="280" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="280" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="280" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="280" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="294" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="56" width="10" height="10" rx="2" fill="#40c463" /><rect x="308" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="308" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="322" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="336" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="350" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="364" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="364" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="378" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="392" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="392" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="392" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="392" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="392" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="392" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="392" y="84" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="406" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="406" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="406" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="406" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="406" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="406" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="406" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="420" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="434" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="448" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="448" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="448" y="28" width="10" height="10" rx="2" fill="#30a14e" /><rect x="448" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="448" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="448" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="448" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="462" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="56" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="476" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="476" y="84" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="14" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="28" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="42" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="490" y="70" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" /><rect x="490" y="84" width="10" height="10" rx="2" fill="#40c463" /><rect x="504" y="0" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="14" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="28" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="42" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="56" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="70" width="10" height="10" rx="2" fill="#9be9a8" /><rect x="504" y="84" width="10" height="10" rx="2" fill="#216e39" /><rect x="518" y="0" width="10" height="10" rx="2" fill="rgba(255,255,255,0.05)" />
+            </g>
+        </g>
+
+        <g transform="translate(30, 500)">
              <text font-family="monospace" font-size="10" class="text-muted">
-                System Status: <tspan fill="#3fb950">ONLINE</tspan> |
-                Last Updated: <tspan fill="#c9d1d9">06:51 AM UTC</tspan>
+                Generated with GitHub GraphQL API | 12:31 PM UTC
             </text>
         </g>
     
