@@ -38,6 +38,7 @@ jobs:
         run: node scripts/generate-dashboard.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
 
       - name: Commit and Push
         run: |
