@@ -1,10 +1,10 @@
 # 👋 Hi, I'm Hamdi Soudani
 
-## 🚀 Full-Stack Developer & AI Agent Specialist
+## 🛡️ Senior AI Systems, Full-Stack/DevOps & Application Security Engineer
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Full-Stack+Developer+%26+AI+Specialist;Building+Intelligent+Applications;Innovating+with+Code+%26+AI&font=Fira+Code&center=true&width=500&height=45&color=0d8ce4&vCenter=true&pause=1000&size=20)](https://github.com/hamdisoudani)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Senior+AI+Systems+Engineer;Full-Stack+%26+DevOps+Specialist;AppSec+%26+Adversarial+Robustness;Building+Resilient+Autonomous+Agents&font=Fira+Code&center=true&width=550&height=45&color=0d8ce4&vCenter=true&pause=1000&size=20)](https://github.com/hamdisoudani)
 
-> Building intelligent applications that bridge the gap between cutting-edge AI and practical software engineering.
+> 6+ years shipping production distributed backends, crash-resilient autonomous agent engines, hybrid GraphRAG systems, and empirical LLM/API security defenses. TryHackMe Top 3% · Regional CTF Finalist.
 
 ---
 
@@ -16,79 +16,64 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Flagship Open-Source & Production Systems
 
-### **Frontend Development**
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=flat&logo=vuedotjs&logoColor=4FC08D)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+### 1. ⚡ [Anvil — Go-Based Autonomous Agent Engine](https://github.com/hamdisoudani/anvil)
+- Event-sourced, resumable autonomous agent engine in Go that **never loses state** across crashes, network drops, or timeouts.
+- Real HTTP+SSE transport, co-evolved React SDK, and a frontend-tool protocol that eliminates MCP complexity for UI-bound tools.
+- *Stack:* Go, SSE, React, TypeScript, Docker.
 
-### **Backend & APIs**
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
+### 2. 🦀 [OpenHarness — Pluggable Coding-Agent Harness](https://github.com/hamdisoudani/OpenHarness)
+- Pluggable coding-agent harness written in pure Rust, inspired by DeepSeek Harness (`dsh`).
+- Two lockstep front-ends: **`oh`** (Ratatui terminal TUI + headless mode) and a **Tauri v2** desktop IDE consuming ~40% of Electron's memory footprint.
+- *Stack:* Rust, Ratatui, Tauri v2, TypeScript.
 
-### **AI & Machine Learning**
-![LangChain](https://img.shields.io/badge/LangChain-000000?style=flat&logo=langchain&logoColor=white)
-![LangGraph](https://img.shields.io/badge/LangGraph-000000?style=flat&logo=langchain&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+### 3. 🐝 [BeeNet — Production Agentic RAG System](https://github.com/hamdisoudani/BeeNet)
+- Multi-step reasoning agentic platform implementing a resilient `plan → research → chat` pipeline under LangGraph.
+- Secure NestJS reverse proxy with granular JWT auth, rate limiting, and Next.js modern frontend.
+- *Stack:* Python, LangGraph, NestJS, Next.js, TypeScript.
 
-### **Mobile Development**
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=flat&logo=swift&logoColor=white)
+### 4. 🔀 [Nous-Pool — OpenAI-Compatible Multi-Account Proxy](https://github.com/hamdisoudani/nous-pool)
+- High-performance `/v1/chat/completions` proxy pooling multiple LLM OAuth provider accounts behind a unified endpoint.
+- Automatic token refresh, round-robin healthy pool routing, per-user API key rate-limiting, and React administration dashboard.
+- *Stack:* Python, FastAPI, Supabase, React, Vite.
 
-### **DevOps & Infrastructure**
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white)
+### 5. 📝 [Texlyre — Local-First Collaborative LaTeX/Typst Editor](https://github.com/hamdisoudani/texlyre)
+- Local-first collaborative document editor with WebAssembly offline compilation, split-pane PDF preview, and real-time multiplayer editing.
+- *Demo:* [texlyre.github.io/texlyre](https://texlyre.github.io/texlyre) · *Stack:* TypeScript, React 18, WebAssembly, CRDTs.
+
+### 6. 🔬 [Master PFE Research Suite — LLM Prompt-Injection Defense](https://github.com/hamdisoudani/MASTER-PFE)
+- Complete research and evaluation harness from my 118-page Master's thesis on empirical defense-in-depth against prompt injection.
+- Shipped two-stage production mitigation: 0.08 ms deterministic regex pre-filter + 203.5 ms p95 Nemotron-3.5 semantic evaluator across 250 adversarial trials (Cohen's κ = 0.904).
+- *Stack:* Python, LangGraph, Next.js 15, React 19, Pusher WebSocket bridge.
 
 ---
 
-## 🌟 Featured Projects
+## 🌟 Upstream Open-Source Contributions
 
-### **AI Agent Systems**
-- 🤖 **Mastra.ai Integration** - Building advanced AI agent workflows
-- 🔗 **LangChain Applications** - LLM-powered applications with intelligent routing
-- 🧠 **CopilotKit Integration** - Implementing AI assistants in web applications
-
-### **Full-Stack Applications**
-- ⚡ **Next.js Modern Apps** - High-performance React applications
-- 🚀 **Microservices Architecture** - Scalable backend systems
-- 🎯 **Real-time Applications** - WebSocket and real-time data streaming
-
-### **Mobile Development**
-- 📱 **Cross-Platform Apps** - Flutter and React Native solutions
-- 🍎 **Native iOS Development** - Swift-based mobile applications
+- **[joule-profiler/joule-profiler PR #89](https://github.com/joule-profiler/joule-profiler/pull/89):** Added Rust core/CLI overhead estimation for Linux energy profiling (closing Issue #88 for Inria Lille SPIRALS team).
+- **[Portkey-AI/gateway PR #1862](https://github.com/Portkey-AI/gateway/pull/1862):** Fixed AWS Bedrock tool-result cachePoint lifting and cache control TTL forwarding.
 
 ---
 
+## 🛠️ Core Technical Stack
 
-## 📫 Let's Connect
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hamdisoudani)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/hamdisoudani)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hamdi.soudani@example.com)
-
----
-
-## 📚 Latest Blog Posts
-
-<!-- BLOG-POST-LIST:START -->
-<!-- BLOG-POST-LIST:END -->
+- **Languages:** Go, Rust, Python, TypeScript, JavaScript, SQL, Bash.
+- **AI & Agents:** LangGraph, LangChain, Hybrid GraphRAG (Neo4j + Qdrant), Prompt Security, OWASP LLM Top 10, LLM-as-a-Judge.
+- **Backend & Distributed Systems:** NestJS, FastAPI, Node.js, NATS, RabbitMQ, WebSockets, SSE, REST, GraphQL.
+- **DevOps & Cloud:** Docker, GitHub Actions CI/CD, Linux / POSIX systems, Reverse Proxies, Cloudflare.
+- **Security & AppSec:** TryHackMe Top 3%, Threat Modeling, Burp Suite, Network Security, Zero-Trust Architecture.
 
 ---
 
-> *"Transforming ideas into intelligent, scalable solutions through code and AI innovation."*
+## 📫 Connect with Me
+
+- 🌐 **B2B Engineering Menu:** [hamdisoudani.github.io/b2b-engineering-menu](https://hamdisoudani.github.io/b2b-engineering-menu/)
+- 💼 **LinkedIn:** [linkedin.com/in/hamdisoudani](https://www.linkedin.com/in/hamdisoudani/)
+- 🐙 **GitHub:** [github.com/hamdisoudani](https://github.com/hamdisoudani)
+- ✉️ **Email:** [hamdi@akarouter.dev](mailto:hamdi@akarouter.dev) · [hamdisoudani.education@gmail.com](mailto:hamdisoudani.education@gmail.com)
+- 📱 **WhatsApp / Telegram:** +216 27 504 461
 
 ---
 
-*Last updated: October 2025*
+*Last updated: October 2026*
